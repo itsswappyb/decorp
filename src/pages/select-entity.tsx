@@ -9,8 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Router from "next/router";
+import { useEntityStore } from "@/store/zustand";
+import { useAddress } from "@thirdweb-dev/react";
 
 const SelectEntity = () => {
+  const { entity, add: addEntity } = useEntityStore();
+  const address = useAddress();
+
+  console.log({ entity });
   return (
     <div className="flex flex-col items-center mt-32 mx-36">
       <h1 className="text-3xl font-thin tracking-widest text-[#8D8D8D] mb-9">
@@ -40,6 +46,14 @@ const SelectEntity = () => {
             <Button
               onClick={() => {
                 console.log("DAO selected");
+                addEntity({
+                  name: "",
+                  ownerOrManagerNameOrAddress: address || "",
+                  description: "",
+                  type: "DAO",
+                  treasuryWalletAddress: "",
+                  residentialAddress: "",
+                });
                 Router.push("/kyc");
               }}
             >
@@ -70,6 +84,14 @@ const SelectEntity = () => {
             <Button
               onClick={() => {
                 console.log("DAO selected");
+                addEntity({
+                  name: "",
+                  ownerOrManagerNameOrAddress: address || "",
+                  description: "",
+                  type: "BVI Limited Company",
+                  treasuryWalletAddress: "",
+                  residentialAddress: "",
+                });
                 Router.push("/kyc");
               }}
             >

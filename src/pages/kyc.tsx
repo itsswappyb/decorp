@@ -11,9 +11,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Router from "next/router";
 import { Label } from "@/components/ui/label";
+import { useEntityStore } from "@/store/zustand";
 
 const KYC = () => {
   const [showNameInput, setShowNameInput] = useState(false);
+  const [nameOrWallet, setNameOrWallet] = useState("");
+  const { entity, add: addEntity } = useEntityStore();
+
+  console.log({ entity });
 
   return (
     <Card className="flex flex-col items-center mt-32 max-w-2xl py-6 mx-auto">
@@ -33,10 +38,18 @@ const KYC = () => {
               type="text"
               placeholder="Full Name or Wallet Address"
               className="mb-6"
+              onChange={(e) => setNameOrWallet(e.target.value)}
             />
             <Button
               type="button"
-              onClick={() => Router.push("/company-overview")}
+              onClick={() => {
+                const newEntity = {
+                  ...entity,
+                  ownerOrManagerNameOrAddress: nameOrWallet,
+                };
+                addEntity(newEntity);
+                // Router.push("/company-overview");
+              }}
             >
               Next
             </Button>

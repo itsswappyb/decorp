@@ -1,34 +1,43 @@
 import { create } from "zustand";
 
-// Entity Name
-// Entity Description
-// Entity Type
-// Entity Treasury Wallet Address
-// Entity Residential Address (Default BVI Address / Smart Contract Address for DAO)
 interface EntityInfo {
-  name: string;
-  description: string;
-  type: string;
-  treasuryWalletAddress: string;
-  residentialAddress: string;
+  name?: string;
+  ownerOrManagerNameOrAddress?: string;
+  description?: string;
+  type?: string;
+  treasuryWalletAddress?: string;
+  residentialAddress?: string;
 }
 
 type EntityStore = {
-  entities: EntityInfo[];
+  entity: EntityInfo | null;
   add: (entity: EntityInfo) => void;
-  remove: (entityName: string) => void;
-  removeAll: () => void;
+  remove: () => void;
 };
+
 export const useEntityStore = create<EntityStore>((set) => ({
-  entities: [], // Initialize as an empty array
+  entity: {
+    name: "",
+    ownerOrManagerNameOrAddress: "",
+    description: "",
+    type: "",
+    treasuryWalletAddress: "",
+    residentialAddress: "",
+  }, // Initial values
 
-  add: (newEntity) =>
-    set((state) => ({ entities: [...state.entities, newEntity] })), // Add newEntity to the array
+  // add new values to the existing entity
+  // add: (entity) => (state: any) => set({ ...state.entity, entity }),
+  add: (entity) => set({ entity }),
 
-  remove: (entityName) =>
-    set((state) => ({
-      entities: state.entities.filter((entity) => entity.name !== entityName), // Filter out the entity with the given id
-    })),
-
-  removeAll: () => set({ entities: [] }), // Reset to an empty array
+  remove: () =>
+    set({
+      entity: {
+        name: "",
+        ownerOrManagerNameOrAddress: "",
+        description: "",
+        type: "",
+        treasuryWalletAddress: "",
+        residentialAddress: "",
+      },
+    }), // Reset to empty state
 }));

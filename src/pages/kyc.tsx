@@ -48,7 +48,7 @@ const KYC = () => {
                   ownerOrManagerNameOrAddress: nameOrWallet,
                 };
                 addEntity(newEntity);
-                // Router.push("/company-overview");
+                Router.push("/review");
               }}
             >
               Next

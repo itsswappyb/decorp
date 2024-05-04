@@ -22,7 +22,8 @@ export const useEntityStore = create<EntityStore>((set) => ({
     description: "",
     type: "",
     treasuryWalletAddress: "",
-    residentialAddress: "",
+    residentialAddress:
+      "Little Hill, PO Box 1102 Spanish Town VG1150 | Hotels & Resorts",
   }, // Initial values
 
   // add new values to the existing entity

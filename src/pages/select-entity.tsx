@@ -52,7 +52,6 @@ const SelectEntity = () => {
                   description: "",
                   type: "DAO",
                   treasuryWalletAddress: "",
-                  residentialAddress: "",
                 });
                 Router.push("/kyc");
               }}
@@ -90,7 +89,6 @@ const SelectEntity = () => {
                   description: "",
                   type: "BVI Limited Company",
                   treasuryWalletAddress: "",
-                  residentialAddress: "",
                 });
                 Router.push("/kyc");
               }}

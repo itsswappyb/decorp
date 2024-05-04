@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
 import Logo from "./ui/logo";
+import ConnectButton from "@/components/connect-button";
 
 type Props = {};
 
@@ -18,9 +19,10 @@ function Navigation({}: Props) {
       <Logo />
       {/* </Link> */}
 
-      <Button onClick={() => router.push("#")} className="">
+      {/* <Button onClick={() => router.push("#")} className="">
         Connect Wallet
-      </Button>
+      </Button> */}
+      <ConnectButton />
     </nav>
   );
 }

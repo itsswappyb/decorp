@@ -34,7 +34,7 @@ const SelectEntity = () => {
           decision-making and community involvement.
         </p>
       </div> */}
-      <div className="grid grid-cols-2 gap-x-6">
+      <div className="grid grid-cols-3 gap-x-6">
         {/* DAO */}
         <Card>
           <CardHeader>
@@ -42,12 +42,15 @@ const SelectEntity = () => {
           </CardHeader>
           <CardContent>
             <p>
-              Establish a Decentralized Autonomous Organization (DAO) quickly
-              and transparently, perfect for decentralized governance or
-              community-driven projects. Benefit from global accessibility and
-              blockchain visibility, eliminating the need for traditional
-              intermediaries. Ideal for projects prioritizing decentralized
-              decision-making and community involvement.
+              Setup a Decentralized Autonomous Organization (DAO) quickly and
+              transparently
+              <br />
+              <br />
+              Perfect for decentralized governance or community-driven projects.
+              <br />
+              <br />
+              Ideal for projects prioritizing decentralized decision-making and
+              community involvement.
             </p>
           </CardContent>
           <CardFooter>
@@ -67,19 +70,42 @@ const SelectEntity = () => {
           </CardHeader>
           <CardContent>
             <p>
-              Set up a BVI Business Company (BC) in just 3 to 5 business days
-              with our streamlined process, providing excellent value for token
-              issuance, asset holding, or VC endeavors. Enjoy privacy benefits
-              as directors and shareholders remain off public records, and with
-              BVI off the EU blacklist, it's easier for Europeans to utilize.
-              Ideal for DeFi companies needing a token entity.
+              Setup a BVI Business Company (BC) in just 10 business days.
+              <br />
+              <br />
+              Excellent for token issuance, asset holding, or VC endeavors.
+              <br />
+              <br />
+              Enjoy privacy benefits as directors and shareholders remain off
+              public records.
+              <br />
+              <br /> Ideal for DeFi companies needing a token entity.
             </p>
+          </CardContent>
+          <CardFooter>
+            <Button
+              onClick={() => {
+                console.log("DAO selected");
+              }}
+            >
+              Select
+            </Button>
+          </CardFooter>
+        </Card>
+        {/* Coming Soon */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Cayman Islands</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-500 italic">Coming Soon...</p>
           </CardContent>
           <CardFooter className="self-end">
             <Button
               onClick={() => {
                 console.log("DAO selected");
               }}
+              className="hidden"
             >
               Select
             </Button>

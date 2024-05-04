@@ -14,10 +14,16 @@ import { Label } from "@/components/ui/label";
 import { useEntityStore } from "@/store/zustand";
 import Image from "next/image";
 
+import { useContract, useLazyMint, Web3Button } from "@thirdweb-dev/react";
+import { NFT_ADDRESS_CARDONA } from "../lib/constants";
+
 const Review = () => {
   const [showNameInput, setShowNameInput] = useState(false);
   const [nameOrWallet, setNameOrWallet] = useState("");
   const { entity, add: addEntity } = useEntityStore();
+
+  const { contract } = useContract(NFT_ADDRESS_CARDONA);
+  const { mutateAsync: lazyMint, isLoading, error } = useLazyMint(contract);
 
   console.log({ entity });
 
@@ -58,15 +64,63 @@ const Review = () => {
         </div>
       </CardContent>
       <CardFooter className="w-full px-12">
-        <Button
+        {/* <Button
           type="button"
           onClick={() => {
+            // TODO:
+            // lazy mint NFT
             // Router.push("/success");
           }}
           className="w-full"
         >
           Submit
-        </Button>
+        </Button> */}
+        <Web3Button
+          contractAddress={NFT_ADDRESS_CARDONA}
+          action={async () => {
+            await lazyMint({
+              // Metadata of the NFTs to upload
+              metadatas: [
+                {
+                  name: entity?.name || "",
+                  description: entity?.description || "",
+                  image: "/images/swiftlaw-logo.png",
+                  external_url: "https://swiftlaw-decorp.vercel.app",
+                  attributes: [
+                    {
+                      trait_type: "Company Name",
+                      value: entity?.name || "",
+                    },
+                    {
+                      trait_type: "Company Description",
+                      value: entity?.description || "",
+                    },
+                    {
+                      trait_type: "Owner",
+                      value: entity?.ownerOrManagerNameOrAddress || "",
+                    },
+                    {
+                      trait_type: "Company Type",
+                      value: entity?.type || "",
+                    },
+                    {
+                      trait_type: "Treasury Wallet Address",
+                      value: entity?.treasuryWalletAddress || "",
+                    },
+                    {
+                      trait_type: "Residential Address",
+                      value: entity?.residentialAddress || "",
+                    },
+                  ],
+                },
+              ],
+            });
+
+            Router.push("/success");
+          }}
+        >
+          {isLoading ? "Submitting..." : "Submit & Claim"}
+        </Web3Button>
       </CardFooter>
     </Card>
   );

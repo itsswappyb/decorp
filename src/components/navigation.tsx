@@ -11,13 +11,14 @@ function Navigation({}: Props) {
   const router = useRouter();
 
   return (
-    <nav className="my-12 flex justify-around items-center sticky z-10 backdrop-filter backdrop-blur-lg bg-opacity-30">
-      <Link href="/" className="hover:opacity-75">
-        {/* <p className="font-[ramaraga-bold] font-extrabold text-xl">Augier</p> */}
-        <Logo />
-      </Link>
+    <nav className=" z-10 fixed left-0 top-0 flex w-full justify-around border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-lg">
+      {/* <Link href="/" className="hover:opacity-75"> */}
 
-      <Button onClick={() => router.push("#")} variant="link" className="">
+      {/* <p className="font-[ramaraga-bold] font-extrabold text-xl">Augier</p> */}
+      <Logo />
+      {/* </Link> */}
+
+      <Button onClick={() => router.push("#")} className="">
         Connect Wallet
       </Button>
     </nav>

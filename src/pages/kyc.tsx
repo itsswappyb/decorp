@@ -12,12 +12,16 @@ import { Input } from "@/components/ui/input";
 import Router from "next/router";
 import { Label } from "@/components/ui/label";
 import { useEntityStore } from "@/store/zustand";
+import { useAddress } from "@thirdweb-dev/react";
 
 const KYC = () => {
   const [showNameInput, setShowNameInput] = useState(false);
   const [nameOrWallet, setNameOrWallet] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyDescription, setCompanyDescription] = useState("");
   const { entity, add: addEntity } = useEntityStore();
 
+  const address = useAddress();
   console.log({ entity });
 
   return (
@@ -40,12 +44,33 @@ const KYC = () => {
               className="mb-6"
               onChange={(e) => setNameOrWallet(e.target.value)}
             />
+            <Label className="text-sm tracking-wide text-black mb-3">
+              Name of the Entity.
+            </Label>
+            <Input
+              type="text"
+              placeholder="Company Name"
+              className="mb-6"
+              onChange={(e) => setCompanyName(e.target.value)}
+            />
+            <Label className="text-sm tracking-wide text-black mb-3">
+              Describe what your Company does.
+            </Label>
+            <Input
+              type="text"
+              placeholder="Company Description"
+              className="mb-6"
+              onChange={(e) => setCompanyDescription(e.target.value)}
+            />
             <Button
               type="button"
               onClick={() => {
                 const newEntity = {
                   ...entity,
                   ownerOrManagerNameOrAddress: nameOrWallet,
+                  name: companyName,
+                  description: companyDescription,
+                  treasuryWalletAddress: address,
                 };
                 addEntity(newEntity);
                 Router.push("/review");

@@ -47,11 +47,14 @@ const SelectEntity = () => {
               onClick={() => {
                 console.log("DAO selected");
                 addEntity({
+                  ...entity,
                   name: "",
                   ownerOrManagerNameOrAddress: address || "",
                   description: "",
                   type: "DAO",
                   treasuryWalletAddress: "",
+                  residentialAddress:
+                    "Little Hill, PO Box 1102 Spanish Town VG1150 | Hotels & Resorts",
                 });
                 Router.push("/kyc");
               }}
@@ -82,13 +85,16 @@ const SelectEntity = () => {
           <CardFooter>
             <Button
               onClick={() => {
-                console.log("DAO selected");
+                console.log("BVI selected");
                 addEntity({
+                  ...entity,
                   name: "",
                   ownerOrManagerNameOrAddress: address || "",
                   description: "",
                   type: "BVI Limited Company",
                   treasuryWalletAddress: "",
+                  residentialAddress:
+                    "Little Hill, PO Box 1102 Spanish Town VG1150 | Hotels & Resorts",
                 });
                 Router.push("/kyc");
               }}

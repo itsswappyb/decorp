@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
+import Router from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,12 @@ export default function Home() {
         <h1 className="z-10 absolute mt-32 text-4xl lg:text-6xl font-bold">
           Form your Onchain Company
         </h1>
-        <Button className="absolute top-80">Get Started</Button>
+        <Button
+          className="absolute top-80"
+          onClick={() => Router.push("/select-entity")}
+        >
+          Get Started
+        </Button>
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">

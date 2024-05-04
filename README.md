@@ -1,4 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Deployed Contracts
+
+- NFT_ADDRESS_CARDONA = "0xAd01BafFFAF3Cac85eB62ea26DFCa982D07f6113";
+- NFT_ADDRESS_BASE_SEPOLIA =
+  "0x395Fd7D253d0cA09f0b869B373d9405855711454";
+- NFT_ADDRESS_MANTLE_SEPOLIA = "";
 
 ## Getting Started
 

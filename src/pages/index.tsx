@@ -18,15 +18,20 @@ export default function Home() {
           width={600}
           height={37}
         />
-        <h1 className="z-10 absolute mt-32 text-4xl lg:text-6xl font-bold">
-          Form your Onchain Company
-        </h1>
-        <Button
-          className="absolute top-80"
-          onClick={() => Router.push("/select-entity")}
-        >
-          Get Started
-        </Button>
+        <div className="absolute mt-32">
+          <h1 className="z-10  text-4xl lg:text-6xl font-bold">
+            Onchain Company Formations
+            <br />
+            <p className="text-xl font-normal text-center my-6">
+              Form your DAO or Offshore Company in minutes.
+            </p>
+          </h1>
+          <div className="flex justify-center">
+            <Button onClick={() => Router.push("/select-entity")}>
+              Get Started
+            </Button>
+          </div>
+        </div>
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">

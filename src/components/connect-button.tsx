@@ -1,6 +1,7 @@
 import { ConnectWallet } from "@thirdweb-dev/react";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { useAddress } from "@thirdweb-dev/react";
 
 interface Props {
   title?: string;
@@ -10,14 +11,16 @@ interface Props {
 
 export default function ConnectButton({
   title = "Connect Wallet",
-  className,
+  className = "text-white",
   onClick,
 }: Props) {
+  const address = useAddress();
+
   return (
     <ConnectWallet
       theme="light"
       btnTitle={title}
-      className={cn(buttonVariants({ variant: "default" }), className)}
+      className={cn(className, buttonVariants({ variant: "default" }))}
       modalTitleIconUrl="/images/swiftlaw-logo.svg"
       modalTitle="SwiftLaw"
       welcomeScreen={{
@@ -35,6 +38,14 @@ export default function ConnectButton({
         console.log("Wallet address:", walletAddress);
 
         onClick?.();
+      }}
+      detailsBtn={() => {
+        return (
+          <Button variant="outline" asChild className="cursor-pointer">
+            {/* sliced address - first 6 and last 6 */}
+            <div>{address?.slice(0, 6) + "..." + address?.slice(-6)}</div>
+          </Button>
+        );
       }}
     />
   );

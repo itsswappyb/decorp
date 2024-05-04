@@ -20,7 +20,7 @@ export default function Home() {
         />
         <div className="absolute mt-32">
           <h1 className="z-10  text-4xl lg:text-6xl font-bold">
-            Onchain Company Formations
+            On-chain Company Formations
             <br />
             <p className="text-xl font-normal text-center my-6">
               Form your DAO or Offshore Company in minutes.
